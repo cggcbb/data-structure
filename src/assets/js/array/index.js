@@ -96,9 +96,9 @@ export default class myArray {
     }
     this.size --
     this.data[this.size] = null
-    // 元素个数达到总容量的三分之一时, 缩容一半容量(&&需要保证数组容量不能为0)
+    // 元素个数达到总容量的三分之一时, 缩容一半容量( xxx | 0 指向下取整, 和Math.floor()效果一样 && 需要保证数组容量不能为0)
     if (Object.is(this.size, this.data.length / 3 | 0) && this.data.length / 2) {
-      this._resizeArray(this.data.length / 2)
+      this._resizeArray(this.data.length / 2 | 0)
     }
     return ret
   }

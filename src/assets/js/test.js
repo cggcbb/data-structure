@@ -50,13 +50,13 @@ for(let i = 0; i < 10; i++) {
 
 line()
 
+// 测试 '循环队列' 数据结构
 let loopQueue = new LoopQueue()
 for(let i = 0; i < 10; i++) {
   loopQueue.enqueue(i)
-  consolePrint(loopQueue.data)
-  // if (i % 3 == 2) {
-  //   loopQueue.dequeue()
-  //   consolePrint(loopQueue.toString())
-  // }
+  consolePrint(loopQueue.toString())
+  if (i % 3 == 2) {
+    loopQueue.dequeue()
+    consolePrint(loopQueue.toString())
+  }
 }
-

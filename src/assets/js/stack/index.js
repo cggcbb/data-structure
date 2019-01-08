@@ -1,5 +1,5 @@
 /*
- * @Description: 栈是一种线性结构, 相比数组, 栈对应的操作是数组的子集, 只能从一端添加数据, 也只能从这一端取出数据(LIFO)
+ * @Description: 栈是一种线性结构, 相比数组, 栈对应的操作是数组的子集, 只能从栈顶添加数据, 也只能从栈顶取出数据(LIFO)
  * @Author: cggcbb
  * @Date: 2019-01-08 10:33:38
  * @LastEditTime: 2019-01-08 16:20:03
@@ -24,7 +24,7 @@ export default class Stack {
   push(element) {
     this.array.addLast(element)
   }
-  // 弹出栈顶元素(删除最后一个入栈的元素)
+  // 弹出栈顶元素(删除栈顶的元素)
   pop() {
     return this.array.removeLast()
   }
