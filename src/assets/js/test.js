@@ -1,25 +1,62 @@
 import Array from '@/assets/js/array'
 import Stack from '@/assets/js/stack'
+import { ArrayQueue, LoopQueue } from '@/assets/js/queue'
 
+// 自定义 console.log
+const consolePrint = (content, color = '#9e33dc') => {
+  console.log(`%c ${content}`, `color: ${color}`)
+}
+// 分割线
+const line = () => {
+  consolePrint('—————————————————————————————————————————————————————————————————————————————————', '#f40')
+}
+
+// 测试 '数组' 数据结构
 let array = new Array()
-
 for(let i = 0; i < 10; i++) {
   array.addLast(i)
-  console.log(`%c ${array.toString()}`, 'color: #9e33dc')
+  consolePrint(array.toString())
   if (i % 3 == 2) {
     array.removeLast()
-    console.log(`%c ${array.toString()}`, 'color: #9e33dc')
+    consolePrint(array.toString())
   }
 }
 
-console.log('===============================================================================')
+line()
 
+// 测试 '栈' 数据结构
 let stack = new Stack()
 for(let i = 0; i < 10; i++) {
   stack.push(i)
-  console.log(`%c ${stack.toString()}`, 'color: #9e33dc')
+  consolePrint(stack.toString())
   if (i % 3 == 2) {
     stack.pop()
-    console.log(`%c ${stack.toString()}`, 'color: #9e33dc')
+    consolePrint(stack.toString())
   }
 }
+
+line()
+
+// 测试 '数组队列' 数据结构
+let arrayQueue = new ArrayQueue()
+for(let i = 0; i < 10; i++) {
+  arrayQueue.enqueue(i)
+  consolePrint(arrayQueue.toString())
+  if (i % 3 == 2) {
+    arrayQueue.dequeue()
+    consolePrint(arrayQueue.toString())
+  }
+}
+
+line()
+
+let loopQueue = new LoopQueue()
+for(let i = 0; i < 10; i++) {
+  loopQueue.enqueue(i)
+  consolePrint(loopQueue.data)
+  // if (i % 3 == 2) {
+  //   loopQueue.dequeue()
+  //   consolePrint(loopQueue.toString())
+  // }
+}
+
