@@ -2,10 +2,10 @@
  * @Description: 栈是一种线性结构, 相比数组, 栈对应的操作是数组的子集, 只能从栈顶添加数据, 也只能从栈顶取出数据(LIFO)
  * @Author: cggcbb
  * @Date: 2019-01-08 10:33:38
- * @LastEditTime: 2019-01-08 16:20:03
+ * @LastEditTime: 2019-01-10 10:41:18
  * @Application: 撤销(Undo)操作, 程序调用的系统栈, 匹配括号
  */
-import myArray from '@/assets/js/array'
+import myArray from '@/assets/js/array/Array'
 
 export default class Stack {
   constructor(capacity = 10) {
@@ -42,6 +42,6 @@ export default class Stack {
       }
     }
     data += '] top'
-    return `Stack: size = ${size}, capacity = ${this.getCapacity()}, data = ${data}`
+    return `ArrayStack: size = ${size}, capacity = ${this.getCapacity()}, data = ${data}`
   }
 }

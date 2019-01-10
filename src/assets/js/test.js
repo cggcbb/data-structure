@@ -1,6 +1,7 @@
-import Array from '@/assets/js/array'
-import Stack from '@/assets/js/stack'
-import { ArrayQueue, LoopQueue } from '@/assets/js/queue'
+import Array from '@/assets/js/array/Array'
+import ArrayStack from '@/assets/js/stack/ArrayStack'
+import ArrayQueue from '@/assets/js/queue/ArrayQueue'
+import LoopQueue from '@/assets/js/queue/LoopQueue'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc') => {
@@ -25,7 +26,7 @@ for(let i = 0; i < 10; i++) {
 line()
 
 // 测试 '栈' 数据结构
-let stack = new Stack()
+let stack = new ArrayStack()
 for(let i = 0; i < 10; i++) {
   stack.push(i)
   consolePrint(stack.toString())
