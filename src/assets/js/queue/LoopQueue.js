@@ -2,7 +2,7 @@
  * @Description: 循环队列
  * @Author: cggcbb
  * @Date: 2019-01-10 10:33:29
- * @LastEditTime: 2019-01-10 10:37:26
+ * @LastEditTime: 2019-01-10 11:50:29
  */
 
 export default class LoopQueue {
@@ -37,7 +37,7 @@ export default class LoopQueue {
   // 出队(删除队首元素)
   dequeue() {
     if (this.isEmpty()) {
-      return new Error('Cannot dequeue from an empty queue')
+      throw new Error('Cannot dequeue from an empty queue')
     }
     let ret = this.data[this.front]
     this.data[this.front] = null
@@ -51,7 +51,7 @@ export default class LoopQueue {
   // 查看队首元素
   getFront() {
     if (this.isEmpty()) {
-      return new Error('Cannot get anyone from an empty queue')
+      throw new Error('Cannot get anyone from an empty queue')
     }
     return this.data[this.front]
   }

@@ -2,10 +2,11 @@
  * @Description: 队列是一种线性结构, 相比数组, 队列对应的操作是数组的子集, 只能从队尾(tail)添加数据, 也只能从队首(front)取出数据(FIFO)
  * @Author: cggcbb
  * @Date: 2019-01-08 16:10:40
- * @LastEditTime: 2019-01-10 10:40:50
- * @Ps: 我自己电脑测试过1000000次'数组队列'和'循环队列'的入队和出队操作 分别花费时间 1007535 ms 和 87 ms
+ * @LastEditTime: 2019-01-10 10:44:56
+ * @Ps: 我自己电脑测试过1000000次"数组队列"和"循环队列"的入队和出队操作 分别花费时间 1007535 ms 和 87 ms
  *      因为数组队列的出队(dequeue)算法属于O(n)级别, 而循环队列的出队(dequeue)算法属于O(1)(均摊)级别
  */
+
 import myArray from '@/assets/js/array/Array'
 
 export default class ArrayQueue {
