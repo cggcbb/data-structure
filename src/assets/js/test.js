@@ -5,10 +5,11 @@ import ArrayQueue from '@/assets/js/queue/ArrayQueue'
 import LoopQueue from '@/assets/js/queue/LoopQueue'
 import LinkedListQueue from '@/assets/js/queue/LinkedListQueue'
 import LinkedList from '@/assets/js/linkedList/LinkedList'
+import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
-  console.log(`%c ${content}`, `color: ${color}; font-size: ${fontSize}px`)
+  console.log(`%c${content}`, `color: ${color}; font-size: ${fontSize}px`)
 }
 // 分割线
 const line = (text) => {
@@ -109,3 +110,23 @@ linkedList.removeFirst()
 consolePrint(linkedList) // LinkedList: 3 -> 666 -> 1 -> 0 ->  NULL
 linkedList.removeLast()
 consolePrint(linkedList) // LinkedList: 3 -> 666 -> 1 ->  NULL
+
+line('BinarySearchTree')
+
+let binarySearchTree = new BinarySearchTree()
+let arr = [5, 3, 6, 8, 4, 2]
+for (let i = 0; i < arr.length; i++) {
+  binarySearchTree.addElement(arr[i])
+}
+line('prevOrder')
+binarySearchTree.prevOrder() // 5 3 2 4 6 8
+line('prevOrderNoneRecursive')
+binarySearchTree.prevOrderNoneRecursive() // 5 3 2 4 6 8
+line('inOrder')
+binarySearchTree.inOrder() // 2 3 4 5 6 8
+line('postOrder')
+binarySearchTree.postOrder() // 2 4 3 8 6 5
+line('leverOrder')
+binarySearchTree.leverOrder()
+consolePrint(`mini : ${binarySearchTree.mini()}`)
+consolePrint(`max : ${binarySearchTree.max()}`)
