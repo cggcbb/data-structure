@@ -1,5 +1,9 @@
 # data-structure
 
+```
+All the code is put in the directory src/assets/js
+```
+
 ## Project setup
 ```
 npm install
