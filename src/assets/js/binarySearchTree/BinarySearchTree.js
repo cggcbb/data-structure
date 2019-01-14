@@ -214,16 +214,16 @@ export default class BinarySearchTree {
       return node
     } else { // Object.is(node.element, element)
 
-      // 待删除的节点没有左子树
+      // 待删的节点没有左子树
       if (!node.left) {
         return this._removeMinNoneLeft(node)
       }
-      // 待删除的节点没有右子树
+      // 待删的节点没有右子树
       if (!node.right) {
         return this._removeMaxNoneRight(node)
       }
       /**
-       * 待删除的节点既有左子树, 又有右子树
+       * 待删的节点既有左子树, 又有右子树
        * Hibbard deletion in 1962
        * 1、找到待删节点的后继(比待删节点大的最小节点(R), 即待删节点右子树的最小节点) 
        *             或者前驱(比待删节点小的最大节点(R), 即待删节点左子树的最大节点)
@@ -240,11 +240,11 @@ export default class BinarySearchTree {
       node.left = node.right = null
       return successorNode
       
-      // 前驱
+      // 前驱y
       /**
        * let pioneerNode = this._max(node.left)
-       * pioneerNode.right = node.right
        * pioneerNode.left = this._removeMax(node.left)
+       * pioneerNode.right = node.right
        * node.left = node.right = null
        * return pioneerNode
        */
