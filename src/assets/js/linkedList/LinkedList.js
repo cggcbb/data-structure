@@ -2,14 +2,14 @@
  * @Description: 链表
  * @Author: cggcbb
  * @Date: 2019-01-10 10:45:47
- * @LastEditTime: 2019-01-10 14:29:43
+ * @LastEditTime: 2019-01-14 16:27:07
  */
 
 import Node from '../linkedList/Node'
 
 export default class LinkedList {
   constructor() {
-    // 虚拟头结点
+    // 虚拟头节点
     this.dummyHead = new Node()
     this.size = 0
   }
