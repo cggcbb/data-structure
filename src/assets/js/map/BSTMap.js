@@ -2,7 +2,7 @@
  * @Description: 基于二分搜索树的映射
  * @Author: cggcbb
  * @Date: 2019-01-15 15:35:34
- * @LastEditTime: 2019-01-15 16:13:43
+ * @LastEditTime: 2019-01-15 16:24:10
  */
 import Node from './BSTNode'
 
@@ -145,7 +145,7 @@ export default class BSTMap {
       node.left = node.right = null
       return successorNode
       
-      // 前驱y
+      // 前驱
       /**
        * let pioneerNode = this._max(node.left)
        * pioneerNode.left = this._removeMax(node.left)

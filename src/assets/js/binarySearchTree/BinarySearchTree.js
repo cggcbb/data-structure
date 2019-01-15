@@ -2,7 +2,7 @@
  * @Description: 二分搜索树 二叉树的一种, 每个节点的值, 大于其左子树所有节点的值, 小于其右子树所有的节点
  * @Author: cggcbb
  * @Date: 2019-01-10 16:13:37
- * @LastEditTime: 2019-01-15 11:30:20
+ * @LastEditTime: 2019-01-15 16:24:14
  */
 import Node from './Node'
 import Stack from '@/assets/js/stack/ArrayStack'
@@ -240,7 +240,7 @@ export default class BinarySearchTree {
       node.left = node.right = null
       return successorNode
       
-      // 前驱y
+      // 前驱
       /**
        * let pioneerNode = this._max(node.left)
        * pioneerNode.left = this._removeMax(node.left)

@@ -2,13 +2,14 @@
  * @Description: 基于链表的映射
  * @Author: cggcbb
  * @Date: 2019-01-15 14:13:58
- * @LastEditTime: 2019-01-15 16:01:50
+ * @LastEditTime: 2019-01-15 16:22:41
  */
 
 import Node from './LinkedListNode'
 
 export default class LinkedListMap {
   constructor() {
+    // 虚拟头节点
     this.dummyHead = new Node()
     this.size = 0
   }
