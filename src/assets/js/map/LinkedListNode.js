@@ -1,8 +1,8 @@
 /*
- * @Description: 映射节点
+ * @Description: 链表映射节点
  * @Author: cggcbb
  * @Date: 2019-01-15 14:14:57
- * @LastEditTime: 2019-01-15 14:36:01
+ * @LastEditTime: 2019-01-15 15:41:29
  */
 
 export default class Node {

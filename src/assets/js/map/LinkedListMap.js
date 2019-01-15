@@ -2,10 +2,10 @@
  * @Description: 基于链表的映射
  * @Author: cggcbb
  * @Date: 2019-01-15 14:13:58
- * @LastEditTime: 2019-01-15 15:29:49
+ * @LastEditTime: 2019-01-15 16:01:50
  */
 
-import Node from './Node'
+import Node from './LinkedListNode'
 
 export default class LinkedListMap {
   constructor() {

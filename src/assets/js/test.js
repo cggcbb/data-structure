@@ -9,6 +9,7 @@ import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 import BSTSet from '@/assets/js/set/BSTSet'
 import LinkedListSet from '@/assets/js/set/LinkedListSet'
 import LinkedListMap from '@/assets/js/map/LinkedListMap'
+import BSTMap from '@/assets/js/map/BSTMap'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -118,6 +119,7 @@ consolePrint(linkedList) // LinkedList: 666 -> 1 ->  NULL
 
 line('BinarySearchTree')
 
+// 测试 '二分搜索树'
 let binarySearchTree = new BinarySearchTree()
 let arr = [5, 3, 6, 8, 4, 2]
 for (let i = 0; i < arr.length; i++) {
@@ -139,6 +141,7 @@ binarySearchTree.remove(3)
 
 line('BSTSet')
 
+// 测试 '二分搜索树集合' 
 let bstSet = new BSTSet()
 let setArr = [5, 3, 6, 8, 4, 2, 2, 5]
 for (let i = 0; i < setArr.length; i++) {
@@ -148,6 +151,7 @@ bstSet.bst.prevOrder()
 
 line('LinkedListSet')
 
+// 测试 '链表集合'
 let linkedListSet = new LinkedListSet()
 for (let i = 0; i < setArr.length; i++) {
   linkedListSet.add(setArr[i])
@@ -157,6 +161,7 @@ consolePrint(linkedListSet.list)
 
 line('LinkedListMap')
 
+// 测试 '链表映射'
 let linkedListMap = new LinkedListMap()
 let mapArr = [1, 9, 2, 8, 3, 0, 7, 4, 0, 6, 5, 5, 0, 9, 1, 2, 7, 5, 4, 4, 3, 0, 6, 7, 9, 6, 4, 8, 3, 4, 7, 9, 0]
 for (let el of mapArr) {
@@ -170,3 +175,19 @@ for (let i = 0; i < 10; i++) {
   consolePrint(`key : ${i}, 出现的次数 : ${linkedListMap.get(i)}`)
 }
 linkedListMap.remove(9)
+
+
+line('BSTMap')
+
+// 测试 '二分搜索树映射'
+let bstMap = new BSTMap()
+for (let el of mapArr) {
+  if (bstMap.contains(el)) {
+    bstMap.set(el, bstMap.get(el) + 1)
+  } else {
+    bstMap.add(el, 1)
+  }
+}
+for (let i = 0; i < 10; i++) {
+  consolePrint(`key : ${i}, 出现的次数 : ${bstMap.get(i)}`)
+}
