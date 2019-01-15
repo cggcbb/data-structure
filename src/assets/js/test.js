@@ -8,6 +8,7 @@ import LinkedList from '@/assets/js/linkedList/LinkedList'
 import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 import BSTSet from '@/assets/js/set/BSTSet'
 import LinkedListSet from '@/assets/js/set/LinkedListSet'
+import LinkedListMap from '@/assets/js/map/LinkedListMap'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -152,3 +153,20 @@ for (let i = 0; i < setArr.length; i++) {
   linkedListSet.add(setArr[i])
 }
 consolePrint(linkedListSet.list)
+
+
+line('LinkedListMap')
+
+let linkedListMap = new LinkedListMap()
+let mapArr = [1, 9, 2, 8, 3, 0, 7, 4, 0, 6, 5, 5, 0, 9, 1, 2, 7, 5, 4, 4, 3, 0, 6, 7, 9, 6, 4, 8, 3, 4, 7, 9, 0]
+for (let el of mapArr) {
+  if (linkedListMap.contains(el)) {
+    linkedListMap.set(el, linkedListMap.get(el) + 1)
+  } else {
+    linkedListMap.add(el, 1)
+  }
+}
+for (let i = 0; i < 10; i++) {
+  consolePrint(`key : ${i}, 出现的次数 : ${linkedListMap.get(i)}`)
+}
+linkedListMap.remove(9)
