@@ -1,8 +1,8 @@
 /*
- * @Description: 基于链表的映射
+ * @Description: 基于链表的map映射 映射内部元素不能重复 时间复杂度为O(n)
  * @Author: cggcbb
  * @Date: 2019-01-15 14:13:58
- * @LastEditTime: 2019-01-15 16:22:41
+ * @LastEditTime: 2019-01-15 16:28:54
  */
 
 import Node from './LinkedListNode'

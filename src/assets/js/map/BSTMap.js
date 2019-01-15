@@ -1,8 +1,9 @@
 /*
- * @Description: 基于二分搜索树的映射
+ * @Description: 基于二分搜索树的map映射, 映射内部元素不能重复  
+ *               时间复杂度平均为O(h) => O(logN), 极端情况下, 二分搜索树映射会退化成链表映射, 时间复杂度变为O(n)
  * @Author: cggcbb
  * @Date: 2019-01-15 15:35:34
- * @LastEditTime: 2019-01-15 16:24:10
+ * @LastEditTime: 2019-01-15 16:29:42
  */
 import Node from './BSTNode'
 
