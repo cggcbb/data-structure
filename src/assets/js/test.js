@@ -6,6 +6,8 @@ import LoopQueue from '@/assets/js/queue/LoopQueue'
 import LinkedListQueue from '@/assets/js/queue/LinkedListQueue'
 import LinkedList from '@/assets/js/linkedList/LinkedList'
 import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
+import BSTSet from '@/assets/js/set/BSTSet'
+import LinkedListSet from '@/assets/js/set/LinkedListSet'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -110,6 +112,8 @@ linkedList.removeFirst()
 consolePrint(linkedList) // LinkedList: 3 -> 666 -> 1 -> 0 ->  NULL
 linkedList.removeLast()
 consolePrint(linkedList) // LinkedList: 3 -> 666 -> 1 ->  NULL
+linkedList.removeElement(3)
+consolePrint(linkedList) // LinkedList: 666 -> 1 ->  NULL
 
 line('BinarySearchTree')
 
@@ -131,3 +135,20 @@ binarySearchTree.leverOrder()
 consolePrint(`mini : ${binarySearchTree.mini()}`)
 consolePrint(`max : ${binarySearchTree.max()}`)
 binarySearchTree.remove(3)
+
+line('BSTSet')
+
+let bstSet = new BSTSet()
+let setArr = [5, 3, 6, 8, 4, 2, 2, 5]
+for (let i = 0; i < setArr.length; i++) {
+  bstSet.add(setArr[i])
+}
+bstSet.bst.prevOrder()
+
+line('LinkedListSet')
+
+let linkedListSet = new LinkedListSet()
+for (let i = 0; i < setArr.length; i++) {
+  linkedListSet.add(setArr[i])
+}
+consolePrint(linkedListSet.list)

@@ -2,7 +2,7 @@
  * @Description: 链表
  * @Author: cggcbb
  * @Date: 2019-01-10 10:45:47
- * @LastEditTime: 2019-01-14 16:27:07
+ * @LastEditTime: 2019-01-15 13:42:45
  */
 
 import Node from '../linkedList/Node'
@@ -93,11 +93,27 @@ export default class LinkedList {
   removeLast() {
     return this.remove(this.size - 1)
   }
+  // 删除指定元素
+  removeElement(element) {
+    let prev = this.dummyHead
+    while(prev.next){
+      if(Object.is(prev.next.element, element)) {
+        break
+      }
+      prev = prev.next
+    }
+    if(prev.next){
+      let delNode = prev.next
+      prev.next = delNode.next
+      delNode.next = null
+      this.size --
+    }
+  }
   // 是否包含指定元素
   contains(element) {
     let cur = this.dummyHead.next
     while (cur) {
-      if (Object.is(cur.next.element, element)) {
+      if (Object.is(cur.element, element)) {
         return true
       }
       cur = cur.next
