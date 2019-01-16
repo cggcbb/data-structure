@@ -4,12 +4,14 @@ import LinkedListStack from '@/assets/js/stack/LinkedListStack'
 import ArrayQueue from '@/assets/js/queue/ArrayQueue'
 import LoopQueue from '@/assets/js/queue/LoopQueue'
 import LinkedListQueue from '@/assets/js/queue/LinkedListQueue'
+import MaxHeapPriorityQueue from '@/assets/js/queue/MaxHeapPriorityQueue'
 import LinkedList from '@/assets/js/linkedList/LinkedList'
 import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 import BSTSet from '@/assets/js/set/BSTSet'
 import LinkedListSet from '@/assets/js/set/LinkedListSet'
 import LinkedListMap from '@/assets/js/map/LinkedListMap'
 import BSTMap from '@/assets/js/map/BSTMap'
+import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -96,6 +98,20 @@ for(let i = 0; i < 10; i++) {
     linkedListQueue.dequeue()
     consolePrint(linkedListQueue)
   }
+}
+
+line("MaxHeapPriorityQueue")
+
+let maxHeapPriorityQueue = new MaxHeapPriorityQueue()
+line('enqueue')
+for(let i = 0; i < 10; i++) {
+  maxHeapPriorityQueue.enqueue(i)
+  consolePrint(maxHeapPriorityQueue)
+}
+line('dequeue')
+for(let i = 0; i < 10; i++) {
+  maxHeapPriorityQueue.dequeue(i)
+  consolePrint(maxHeapPriorityQueue)
 }
 
 line("LinkedList")
@@ -191,3 +207,17 @@ for (let el of mapArr) {
 for (let i = 0; i < 10; i++) {
   consolePrint(`key : ${i}, 出现的次数 : ${bstMap.get(i)}`)
 }
+
+
+line('ArrayMaxHeap')
+let arrayMaxHeap = new ArrayMaxHeap()
+for (let i = 0; i < 10; i++) {
+  arrayMaxHeap.add(Math.random() * 100 | 0)
+}
+let heapArr = []
+for (let i = 0; i< 10; i++) {
+  let temp = arrayMaxHeap.extractMax()
+  heapArr[i] = temp
+  consolePrint(heapArr[i])
+}
+

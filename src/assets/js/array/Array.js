@@ -110,6 +110,15 @@ export default class myArray {
   removeLast() {
     return this.remove(this.size - 1)
   }
+  // 交换下标为 j 和 k 的数据
+  swap(j, k) {
+    if (j < 0 || j >= this.size || k < 0 || k >= this.size ) {
+      throw new Error('swap failed, index is illegal ...')
+    }
+    let temp = this.data[j]
+    this.data[j] = this.data[k]
+    this.data[k] = temp
+  }
   toString() {
     let data = '['
     for (let i = 0; i < this.size; i++) {
