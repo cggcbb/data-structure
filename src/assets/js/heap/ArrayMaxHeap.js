@@ -2,7 +2,7 @@
  * @Description: 基于动态数组实现的最大二叉堆, 二叉堆首先是一个完全二叉树, 还要满足父节点, 既大于左孩子, 又大于右孩子
  * @Author: cggcbb
  * @Date: 2019-01-16 14:36:50
- * @LastEditTime: 2019-01-16 17:29:39
+ * @LastEditTime: 2019-01-17 09:50:15
  */
 
 import myArray from '@/assets/js/array/Array'
@@ -41,19 +41,21 @@ export default class ArrayMaxHeap {
     // 保证添加元素后, 依旧满足最大二叉堆的特性
     this._siftUp(this.data.getSize() - 1)
   }
-  // 交换元素
+  // 堆中元素上浮
   _siftUp(index) {
     while(index > 0 && this.data.get(index) > this.data.get(this._parent(index))) {
       this.data.swap(index, this._parent(index))
       index = this._parent(index)
     }
   }
+  // 查询最大元素
   findMax() {
     if (this.isEmpty()) {
       throw new Error(`can't findMax from an empty heap ...`)
     }
     return this.data.get(0)
   }
+  // 取出最大元素
   extractMax() {
     let ret = this.findMax()
     this.data.swap(0, this.data.getSize() - 1)
@@ -61,6 +63,7 @@ export default class ArrayMaxHeap {
     this._siftDown(0)
     return ret
   }
+  // 堆中元素下沉
   _siftDown(index) {
     while(this._leftChild(index) < this.data.getSize()) {
       let leftChild = this._leftChild(index)
@@ -73,6 +76,7 @@ export default class ArrayMaxHeap {
       }
     }
   }
+  // 返回左孩子和右孩子中, 较大值的孩子索引
   _getLargerChild(index) {
     if ((index + 1) < this.data.getSize() && this.data.get(index + 1) > this.data.get(index)) {
       index ++

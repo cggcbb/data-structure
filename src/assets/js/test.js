@@ -12,6 +12,7 @@ import LinkedListSet from '@/assets/js/set/LinkedListSet'
 import LinkedListMap from '@/assets/js/map/LinkedListMap'
 import BSTMap from '@/assets/js/map/BSTMap'
 import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
+import SegmentTree from '@/assets/js/segmentTree/SegmentTree'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -174,7 +175,6 @@ for (let i = 0; i < setArr.length; i++) {
 }
 consolePrint(linkedListSet.list)
 
-
 line('LinkedListMap')
 
 // 测试 '链表映射'
@@ -192,7 +192,6 @@ for (let i = 0; i < 10; i++) {
 }
 linkedListMap.remove(9)
 
-
 line('BSTMap')
 
 // 测试 '二分搜索树映射'
@@ -208,8 +207,8 @@ for (let i = 0; i < 10; i++) {
   consolePrint(`key : ${i}, 出现的次数 : ${bstMap.get(i)}`)
 }
 
-
 line('ArrayMaxHeap')
+
 let arrayMaxHeap = new ArrayMaxHeap()
 for (let i = 0; i < 10; i++) {
   arrayMaxHeap.add(Math.random() * 100 | 0)
@@ -221,3 +220,22 @@ for (let i = 0; i< 10; i++) {
   consolePrint(heapArr[i])
 }
 
+line('SegmentTree')
+
+let numbers = []
+for (let i = 0; i < 10000000; i++) {
+  numbers.push(Math.random() * 10 | 0)
+}
+let segmentTree = new SegmentTree(numbers, (l, r) => l + r)y
+let time1 = +new Date()
+let total = 0
+for (let i = 100; i <= 9000000; i++) {
+  total += numbers[i]
+}
+let time2 = +new Date()
+consolePrint(`total: ${total},  花费时间: ${time2 - time1}ms`)
+
+let time3 = +new Date()
+let total1 = segmentTree.query(100, 9000000)
+let time4 = +new Date()
+consolePrint(`total: ${total1},  花费时间: ${time4 - time3}ms`)
