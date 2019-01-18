@@ -13,6 +13,7 @@ import LinkedListMap from '@/assets/js/map/LinkedListMap'
 import BSTMap from '@/assets/js/map/BSTMap'
 import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
 import SegmentTree from '@/assets/js/segmentTree/SegmentTree'
+import Trie from '@/assets/js/trie/Trie'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -138,7 +139,7 @@ line('BinarySearchTree')
 
 // 测试 '二分搜索树'
 let binarySearchTree = new BinarySearchTree()
-let arr = [5, 3, 6, 8, 4, 2]
+let arr = ['5', '3', '6', 8, 4, 2]
 for (let i = 0; i < arr.length; i++) {
   binarySearchTree.addElement(arr[i])
 }
@@ -238,3 +239,13 @@ let total1 = segmentTree.query(4, 50)
 segmentTree.update(44, 99)
 let total2 = segmentTree.query(4, 50)
 consolePrint(`before updated total: ${total1}, updated total: ${total2}`) 
+
+
+line('Trie')
+let trie = new Trie()
+trie.insert('number')
+trie.insert('string')
+trie.insert('boolean')
+console.log(trie.search('!@r..g'))
+console.log(trie.startWith('tr'))
+console.log(trie.search('boolean'))

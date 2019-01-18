@@ -2,7 +2,7 @@
  * @Description: 基于链表的map映射 映射内部元素不能重复 时间复杂度为O(n)
  * @Author: cggcbb
  * @Date: 2019-01-15 14:13:58
- * @LastEditTime: 2019-01-15 16:28:54
+ * @LastEditTime: 2019-01-18 15:46:07
  */
 
 import Node from './LinkedListNode'
@@ -74,5 +74,14 @@ export default class LinkedListMap {
       return delNode.value
     }
     return null
+  }
+  keySet() {
+    let ret = new Array()
+    let cur = this.dummyHead.next
+    while(cur) {
+      ret.push(cur.key)
+      cur = cur.next
+    }
+    return ret
   }
 }
