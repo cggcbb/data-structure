@@ -223,19 +223,18 @@ for (let i = 0; i< 10; i++) {
 line('SegmentTree')
 
 let numbers = []
-for (let i = 0; i < 10000000; i++) {
-  numbers.push(Math.random() * 10 | 0)
+for (let i = 1; i <= 100; i++) {
+  numbers.push(i)
 }
-let segmentTree = new SegmentTree(numbers, (l, r) => l + r)y
-let time1 = +new Date()
+let segmentTree = new SegmentTree(numbers, (l, r) => l + r)
+numbers[44] = 99
 let total = 0
-for (let i = 100; i <= 9000000; i++) {
+for (let i = 4; i <= 50; i++) {
   total += numbers[i]
 }
-let time2 = +new Date()
-consolePrint(`total: ${total},  花费时间: ${time2 - time1}ms`)
+consolePrint(`total: ${total}`) 
 
-let time3 = +new Date()
-let total1 = segmentTree.query(100, 9000000)
-let time4 = +new Date()
-consolePrint(`total: ${total1},  花费时间: ${time4 - time3}ms`)
+let total1 = segmentTree.query(4, 50)
+segmentTree.update(44, 99)
+let total2 = segmentTree.query(4, 50)
+consolePrint(`before updated total: ${total1}, updated total: ${total2}`) 

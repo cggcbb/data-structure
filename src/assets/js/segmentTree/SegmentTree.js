@@ -2,7 +2,7 @@
  * @Description: 线段树
  * @Author: cggcbb
  * @Date: 2019-01-17 14:58:41
- * @LastEditTime: 2019-01-17 17:10:24
+ * @LastEditTime: 2019-01-18 10:28:29
  */
 
 export default class segmentTree {
@@ -52,6 +52,28 @@ export default class segmentTree {
     let leftResult = this._query(leftChild, left, middle, queryL, middle)
     let rightResult = this._query(rightChild, middle + 1, right, middle + 1, queryR)
     return this.merge(leftResult, rightResult)
+  }
+  // 更新
+  update(index, value) {
+    if (index < 0 || index >= this.data.length) {
+      throw new Error('index is illegal ...')
+    }
+    this._update(0, 0, this.data.length - 1, index, value)
+  }
+  _update(treeIndex, left, right, index, value) {
+    if (Object.is(left, right)) {
+      this.tree[treeIndex] = value
+      return
+    }
+    let leftChild = this._leftChild(treeIndex)
+    let rightChild = this._rightChild(treeIndex)
+    let middle = left + (right - left) / 2 | 0
+    if (index >= middle + 1) {
+      this._update(rightChild, middle + 1, right, index, value)
+    } else {
+      this._update(leftChild, left, middle, index, value)
+    }
+    this.tree[treeIndex] = this.merge(this.tree[leftChild], this.tree[rightChild])
   }
   getSize() {
     return this.data.length
