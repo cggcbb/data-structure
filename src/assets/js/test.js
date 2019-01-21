@@ -14,6 +14,7 @@ import BSTMap from '@/assets/js/map/BSTMap'
 import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
 import SegmentTree from '@/assets/js/segmentTree/SegmentTree'
 import Trie from '@/assets/js/trie/Trie'
+import AVLTree from '@/assets/js/AVLTree/AVLTree'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -242,6 +243,7 @@ consolePrint(`before updated total: ${total1}, updated total: ${total2}`)
 
 
 line('Trie')
+
 let trie = new Trie()
 trie.insert('number')
 trie.insert('string')
@@ -249,3 +251,16 @@ trie.insert('boolean')
 console.log(trie.search('!@r..g'))
 console.log(trie.startWith('tr'))
 console.log(trie.search('boolean'))
+
+line('AVLTree')
+let AVLTreeObj = new AVLTree()
+let AVLArr = [0, 9, 3, 8, 11, 6, 14, 5, 7, 10, 4, 1, 2]
+for (let el of AVLArr) {
+  if (AVLTreeObj.contains(el)) {
+    AVLTreeObj.set(el, AVLTreeObj.get(el) + 1)
+  } else {
+    AVLTreeObj.add(el, 1)
+  }
+}
+consolePrint(AVLTreeObj.isBTS()) 
+consolePrint(AVLTreeObj.isBalanceTree()) 
