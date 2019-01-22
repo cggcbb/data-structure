@@ -248,9 +248,9 @@ let trie = new Trie()
 trie.insert('number')
 trie.insert('string')
 trie.insert('boolean')
-console.log(trie.search('!@r..g'))
-console.log(trie.startWith('tr'))
-console.log(trie.search('boolean'))
+consolePrint(trie.search('!@r..g'))
+consolePrint(trie.startWith('tr'))
+consolePrint(trie.search('boolean'))
 
 line('AVLTree')
 let AVLTreeObj = new AVLTree()
@@ -262,5 +262,5 @@ for (let el of AVLArr) {
     AVLTreeObj.add(el, 1)
   }
 }
-consolePrint(AVLTreeObj.isBTS()) 
-consolePrint(AVLTreeObj.isBalanceTree()) 
+consolePrint(AVLTreeObj.isBST()) 
+consolePrint(AVLTreeObj.isBalanceTree())

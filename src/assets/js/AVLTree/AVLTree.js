@@ -2,7 +2,7 @@
  * @Description: AVL既满足二分搜索树的性质, 也满足平衡二叉树的性质(每个节点的左孩子和右孩子高度差不能大于1)
  * @Author: cggcbb
  * @Date: 2019-01-21 14:46:52
- * @LastEditTime: 2019-01-21 17:29:24
+ * @LastEditTime: 2019-01-22 10:46:12
  */
 import Node from './Node'
 
@@ -24,7 +24,7 @@ export default class AVLTree {
     }
     return node.height
   }
-  // 获取node节点的平衡因子的绝对值
+  // 获取node节点的平衡因子
   _getBalanceFactor(node) {
     if (!node) {
       return 0
@@ -49,7 +49,7 @@ export default class AVLTree {
     let keys = new Array()
     this._inOrder(this.root, keys)
     for (let i = 1; i < keys.length; i++) {
-      if (keys[i - 1] < keys[i]) {
+      if (keys[i - 1] > keys[i]) {
         return false
       }
     }
@@ -60,7 +60,7 @@ export default class AVLTree {
       return
     }
     this._inOrder(node.left, keys)
-    keys.add(node.key)
+    keys.push(node.key)
     this._inOrder(node.right, keys)
   }
   // 添加元素
@@ -122,6 +122,8 @@ export default class AVLTree {
 
     node.height = Math.max(this._getHeight(node.left), this._getHeight(node.right)) + 1
     leftNode.height = Math.max(this._getHeight(leftNode.left), this._getHeight(leftNode.right)) + 1
+
+    return leftNode
   }
   /**
    * 对节点node进行左旋转
@@ -142,6 +144,8 @@ export default class AVLTree {
 
     node.height = Math.max(this._getHeight(node.left), this._getHeight(node.right)) + 1
     rightNode.height = Math.max(this._getHeight(rightNode.left), this._getHeight(rightNode.right)) + 1
+
+    return rightNode
   }
   // 返回以node为根节点的二分搜索树中，key所在的节点
   _getNode(node, key){
