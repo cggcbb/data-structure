@@ -9,8 +9,10 @@ import LinkedList from '@/assets/js/linkedList/LinkedList'
 import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 import BSTSet from '@/assets/js/set/BSTSet'
 import LinkedListSet from '@/assets/js/set/LinkedListSet'
+import AVLTreeSet from '@/assets/js/set/AVLTreeSet'
 import LinkedListMap from '@/assets/js/map/LinkedListMap'
 import BSTMap from '@/assets/js/map/BSTMap'
+import AVLTreeMap from '@/assets/js/map/AVLTreeMap'
 import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
 import SegmentTree from '@/assets/js/segmentTree/SegmentTree'
 import Trie from '@/assets/js/trie/Trie'
@@ -177,6 +179,17 @@ for (let i = 0; i < setArr.length; i++) {
 }
 consolePrint(linkedListSet.list)
 
+line('AVLTreeSet')
+
+let avlTreeSet = new AVLTreeSet()
+for (let i = 0; i < setArr.length; i++) {
+  avlTreeSet.add(setArr[i])
+}
+consolePrint(avlTreeSet.avl.isBST())
+consolePrint(avlTreeSet.avl.isBalanceTree())
+consolePrint(avlTreeSet.avl.inOrder())
+
+
 line('LinkedListMap')
 
 // 测试 '链表映射'
@@ -207,6 +220,20 @@ for (let el of mapArr) {
 }
 for (let i = 0; i < 10; i++) {
   consolePrint(`key : ${i}, 出现的次数 : ${bstMap.get(i)}`)
+}
+
+line('AVLTreeMap')
+
+let avlTreeMap = new AVLTreeMap()
+for (let el of mapArr) {
+  if (avlTreeMap.contains(el)) {
+    avlTreeMap.set(el, avlTreeMap.get(el) + 1)
+  } else {
+    avlTreeMap.add(el, 1)
+  }
+}
+for (let i = 0; i < 10; i++) {
+  consolePrint(`key : ${i}, 出现的次数 : ${avlTreeMap.get(i)}`)
 }
 
 line('ArrayMaxHeap')
@@ -253,6 +280,7 @@ consolePrint(trie.startWith('tr'))
 consolePrint(trie.search('boolean'))
 
 line('AVLTree')
+
 let AVLTreeObj = new AVLTree()
 let AVLArr = [0, 9, 3, 8, 11, 6, 14, 5, 7, 10, 4, 1, 2]
 for (let el of AVLArr) {
@@ -264,3 +292,9 @@ for (let el of AVLArr) {
 }
 consolePrint(AVLTreeObj.isBST()) 
 consolePrint(AVLTreeObj.isBalanceTree())
+for (let el of AVLArr) {
+  AVLTreeObj.remove(el)
+  if (AVLTreeObj.isBST() && AVLTreeObj.isBalanceTree()) {
+    consolePrint('success')
+  }
+}
