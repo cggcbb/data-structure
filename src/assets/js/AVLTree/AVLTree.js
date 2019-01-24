@@ -2,7 +2,7 @@
  * @Description: AVL既满足二分搜索树的性质, 也满足平衡二叉树的性质(每个节点的左孩子和右孩子高度差不能大于1)
  * @Author: cggcbb
  * @Date: 2019-01-21 14:46:52
- * @LastEditTime: 2019-01-22 10:46:12
+ * @LastEditTime: 2019-01-24 15:27:26
  */
 import Node from './Node'
 
@@ -83,6 +83,10 @@ export default class AVLTree {
     node.height = Math.max(this._getHeight(node.left), this._getHeight(node.right)) + 1
 
     // 平衡维护
+    return this._defendBalance(node)
+  }
+  // 平衡维护
+  _defendBalance(node) {
     // LL
     if (this._getBalanceFactor(node) > 1 && this._getBalanceFactor(node.left) >= 0) {
       return this._rightRotate(node)
@@ -177,27 +181,6 @@ export default class AVLTree {
     }
     node.value = value
   }
-  // 搜索最小元素
-  mini() {
-    return this._mini(this.root)
-  }
-  _mini(node) {
-    if(this.isEmpty()) {
-      throw new Error('BSTMap is empty...')
-    }
-    if (!node.left) {
-      return node
-    }  
-    return this._mini(node.left)
-  }
-  _removeMin(node) {
-    if (!node.left) {
-      return this._removeMinNoneLeft(node)
-    }
-    node.left = this._removeMin(node.left)
-    // 返回删除最小值后新的二分搜索树的根
-    return node
-  }
   _removeMinNoneLeft(node) {
     let rightNode = node.right
     node.right = null
@@ -223,49 +206,59 @@ export default class AVLTree {
     if (!node) {
       return null
     }
+    let retNode = null
     if (node.key > key) {
       node.left = this._remove(node.left, key)
-      return node
+      retNode = node
     } else if (node.key < key) {
       node.right = this._remove(node.right, key)
-      return node
+      retNode = node
     } else { // Object.is(node.key, key)
       
       // 待删的节点没有左子树
       if (!node.left) {
-        return this._removeMinNoneLeft(node)
+        retNode = this._removeMinNoneLeft(node)
       }
       // 待删的节点没有右子树
-      if (!node.right) {
-        return this._removeMaxNoneRight(node)
-      }
+      else if (!node.right) {
+        retNode = this._removeMaxNoneRight(node)
+      } else {
       
-      /**
-       * 待删的节点既有左子树, 又有右子树
-       * Hibbard deletion in 1962
-       * 1、找到待删节点的后继(比待删节点大的最小节点(R), 即待删节点右子树的最小节点) 
-       *             或者前驱(比待删节点小的最大节点(R), 即待删节点左子树的最大节点)
-       * 2、后继: 让R节点的右子树, 链接上待删节点右子树删除R后的二分搜索树
-       *    前驱: 让R节点的右子树, 链接上待删节点右子树
-       * 3、后继: 让R节点的左子树, 链接上待删节点的左子树
-       *    前驱: 让R节点的左子树, 链接上待删节点左子树删除R后的二分搜索树
-       */
+        /**
+         * 待删的节点既有左子树, 又有右子树
+         * Hibbard deletion in 1962
+         * 1、找到待删节点的后继(比待删节点大的最小节点(R), 即待删节点右子树的最小节点) 
+         *             或者前驱(比待删节点小的最大节点(R), 即待删节点左子树的最大节点)
+         * 2、后继: 让R节点的右子树, 链接上待删节点右子树删除R后的二分搜索树
+         *    前驱: 让R节点的右子树, 链接上待删节点右子树
+         * 3、后继: 让R节点的左子树, 链接上待删节点的左子树
+         *    前驱: 让R节点的左子树, 链接上待删节点左子树删除R后的二分搜索树
+         */
 
-      // 后继
-      let successorNode = this._mini(node.right)
-      successorNode.right = this._removeMin(node.right)
-      successorNode.left = node.left
-      node.left = node.right = null
-      return successorNode
-      
-      // 前驱
-      /**
-       * let pioneerNode = this._max(node.left)
-       * pioneerNode.left = this._removeMax(node.left)
-       * pioneerNode.right = node.right
-       * node.left = node.right = null
-       * return pioneerNode
-       */
+        // 后继
+        let successorNode = this._mini(node.right)
+        successorNode.right = this._remove(node.right, successorNode.key)
+        successorNode.left = node.left
+        node.left = node.right = null
+        retNode = successorNode
+        
+        // 前驱
+        /**
+         * let pioneerNode = this._max(node.left)
+         * pioneerNode.left = this._remove(node.left, pioneerNode.key)
+         * pioneerNode.right = node.right
+         * node.left = node.right = null
+         * retNode = pioneerNode
+         */
+      }
+      if (!retNode) {
+        return null
+      }
+      // 更新node的高度值
+      retNode.height = Math.max(this._getHeight(retNode.left), this._getHeight(retNode.right)) + 1
+
+      // 平衡维护
+      return this._defendBalance(retNode)
     }
   }
 }
