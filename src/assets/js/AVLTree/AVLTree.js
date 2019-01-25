@@ -2,7 +2,7 @@
  * @Description: AVL既满足二分搜索树的性质, 也满足平衡二叉树的性质(每个节点的左孩子和右孩子高度差不能大于1)
  * @Author: cggcbb
  * @Date: 2019-01-21 14:46:52
- * @LastEditTime: 2019-01-24 16:04:21
+ * @LastEditTime: 2019-01-25 11:19:02
  */
 import Node from './Node'
 
@@ -123,10 +123,9 @@ export default class AVLTree {
    */
   _rightRotate(node) {
     let leftNode = node.left
-    let temp = leftNode.right
 
+    node.left = leftNode.right
     leftNode.right = node
-    node.left = temp
 
     node.height = Math.max(this._getHeight(node.left), this._getHeight(node.right)) + 1
     leftNode.height = Math.max(this._getHeight(leftNode.left), this._getHeight(leftNode.right)) + 1
@@ -145,10 +144,9 @@ export default class AVLTree {
    */
   _leftRotate(node) {
     let rightNode = node.right
-    let temp = rightNode.left
 
+    node.right = rightNode.left
     rightNode.left = node
-    node.right = temp
 
     node.height = Math.max(this._getHeight(node.left), this._getHeight(node.right)) + 1
     rightNode.height = Math.max(this._getHeight(rightNode.left), this._getHeight(rightNode.right)) + 1
