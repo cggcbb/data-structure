@@ -2,7 +2,7 @@
  * @Description: AVL既满足二分搜索树的性质, 也满足平衡二叉树的性质(每个节点的左孩子和右孩子高度差不能大于1)
  * @Author: cggcbb
  * @Date: 2019-01-21 14:46:52
- * @LastEditTime: 2019-01-25 11:19:02
+ * @LastEditTime: 2019-01-28 10:56:20
  */
 import Node from './Node'
 
@@ -246,11 +246,11 @@ export default class AVLTree {
         
         // 前驱
         /**
-         * let pioneerNode = this._max(node.left)
-         * pioneerNode.left = this._remove(node.left, pioneerNode.key)
-         * pioneerNode.right = node.right
+         * let predecessor = this._max(node.left)
+         * predecessor.left = this._remove(node.left, predecessor.key)
+         * predecessor.right = node.right
          * node.left = node.right = null
-         * retNode = pioneerNode
+         * retNode = predecessor
          */
       }
       if (!retNode) {

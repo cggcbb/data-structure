@@ -3,7 +3,7 @@
  *               时间复杂度平均为O(h) => O(logN), 极端情况下, 二分搜索树映射会退化成链表映射, 时间复杂度变为O(n)
  * @Author: cggcbb
  * @Date: 2019-01-15 15:35:34
- * @LastEditTime: 2019-01-15 16:29:42
+ * @LastEditTime: 2019-01-28 10:57:15
  */
 import Node from './BSTNode'
 
@@ -148,11 +148,11 @@ export default class BSTMap {
       
       // 前驱
       /**
-       * let pioneerNode = this._max(node.left)
-       * pioneerNode.left = this._removeMax(node.left)
-       * pioneerNode.right = node.right
+       * let predecessor = this._max(node.left)
+       * predecessor.left = this._removeMax(node.left)
+       * predecessor.right = node.right
        * node.left = node.right = null
-       * return pioneerNode
+       * return predecessor
        */
     }
   }
