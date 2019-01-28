@@ -17,6 +17,7 @@ import ArrayMaxHeap from '@/assets/js/heap/ArrayMaxHeap'
 import SegmentTree from '@/assets/js/segmentTree/SegmentTree'
 import Trie from '@/assets/js/trie/Trie'
 import AVLTree from '@/assets/js/AVLTree/AVLTree'
+import RBTree from '@/assets/js/redBlackTree/RedBlackTree'
 
 // 自定义 console.log
 const consolePrint = (content, color = '#9e33dc', fontSize = 12) => {
@@ -297,4 +298,18 @@ for (let el of AVLArr) {
   if (AVLTreeObj.isBST() && AVLTreeObj.isBalanceTree()) {
     consolePrint('success')
   }
+}
+
+line('RBTree')
+
+let rbTree = new RBTree()
+for (let el of mapArr) {
+  if (rbTree.contains(el)) {
+    rbTree.set(el, rbTree.get(el) + 1)
+  } else {
+    rbTree.add(el, 1)
+  }
+}
+for (let i = 0; i < 10; i++) {
+  consolePrint(`key : ${i}, 出现的次数 : ${rbTree.get(i)}`)
 }
