@@ -6,6 +6,7 @@ import LoopQueue from '@/assets/js/queue/LoopQueue'
 import LinkedListQueue from '@/assets/js/queue/LinkedListQueue'
 import MaxHeapPriorityQueue from '@/assets/js/queue/MaxHeapPriorityQueue'
 import LinkedList from '@/assets/js/linkedList/LinkedList'
+import IndexMaxHeap from '@/assets/js/heap/IndexMaxHeap'
 import BinarySearchTree from '@/assets/js/binarySearchTree/BinarySearchTree'
 import BSTSet from '@/assets/js/set/BSTSet'
 import LinkedListSet from '@/assets/js/set/LinkedListSet'
@@ -240,14 +241,31 @@ for (let i = 0; i < 10; i++) {
 line('ArrayMaxHeap')
 
 let arrayMaxHeap = new ArrayMaxHeap()
+let indexMaxHeap = new IndexMaxHeap()
 for (let i = 0; i < 10; i++) {
-  arrayMaxHeap.add(Math.random() * 100 | 0)
+  let random = Math.random() * 100 | 0
+  arrayMaxHeap.add(random)
+  indexMaxHeap.add(i, random)
 }
+
 let heapArr = []
 for (let i = 0; i< 10; i++) {
   let temp = arrayMaxHeap.extractMax()
   heapArr[i] = temp
   consolePrint(heapArr[i])
+}
+
+line('IndexMaxHeap')
+
+indexMaxHeap.update(2, 99)
+indexMaxHeap.update(6, 98)
+indexMaxHeap.update(9, 97)
+
+let indexHeapArr = []
+for (let i = 0; i< 10; i++) {
+  let temp = indexMaxHeap.extractMax()
+  indexHeapArr[i] = temp
+  consolePrint(indexHeapArr[i])
 }
 
 line('SegmentTree')
