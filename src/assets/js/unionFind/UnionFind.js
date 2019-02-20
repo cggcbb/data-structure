@@ -2,7 +2,7 @@
  * @Description: 基于rank优化和路径压缩的并查集, 查询操作和合并操作 时间复杂度都是O(h) -> h为树的高度 
  * @Author: cggcbb
  * @Date: 2019-01-21 10:45:45
- * @LastEditTime: 2019-01-21 11:46:20
+ * @LastEditTime: 2019-02-20 15:01:18
  */
 
 export default class QuickFind {
@@ -26,6 +26,15 @@ export default class QuickFind {
     if(p < 0 || p >= this.parent.length) {
       throw new Error('index is illegal...')
     }
+    /**
+     * 递归实现的路径压缩 每一次_find的时候, 将当次查询的根节点指向最终的根节点
+     * 
+     * if (p != this.parent[p]) {
+     *   parent[p] = this._find(this.parent[p])
+     * }
+     * return parent[p]
+     * 
+     */
     while(p != this.parent[p]) {
       // 路径压缩
       this.parent[p] = this.parent[this.parent[p]]
